@@ -1,96 +1,119 @@
 #include "mylib.h"
 
-double Mediana(vector <int> vekt) {
-    int n = vekt.size();
-    double med;
-    sort(vekt.begin(), vekt.end());
-    if (n % 2 == 0) {
-        med = double(vekt[n/2] + vekt[n/2 - 1]) / 2.0;
-    } else {
-        med = vekt[n/2];
-    }
-    return(med);
-}
+vector <Studentas> Generuoti_vector(const int &stud_sk) {
+    vector <Studentas> Grupe;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution dist(1,10);
 
-Studentas Balo_skaiciavimas(Studentas stud) {
-    int suma = 0, n = stud.paz.size();
-    for (int p : stud.paz) {
-        suma+=p;
-    }
-    stud.galVid = 0.4 * double(suma)/double(n) + 0.6 * stud.egz;
-    stud.galMed = 0.4 * Mediana(stud.paz) + 0.6 * stud.egz;
-    if (stud.galVid >= 5) {
-        stud.islaike = true;
-    } else {
-        stud.islaike = false;
-    }
-    return stud;
-}
-
-char Iv_raid_patikra(char ivestis, string raides) {
-    bool tesiam = true;
-    while (tesiam) {
-        ivestis = tolower(ivestis);
-        for (auto &raide : raides) {
-            if (ivestis == raide) {
-                tesiam = false;
-                break;
-            }
+    for (int i = 1; i<=stud_sk; i++) {
+        Studentas temp;
+        int suma = 0;
+        temp.vardas = "Vardas" + to_string(i);
+        temp.pavarde = "Pavarde" + to_string(i);
+        for (int j = 1; j <= 5; j++) {
+            int p = dist(gen);
+            suma += p;
+            temp.paz.push_back(p);
         }
-        if (tesiam) {
-            cout << "Neteisinga ivestis! Bandykite dar karta: "; cin >> ivestis;
+        temp.egz = dist(gen);
+        temp.gal = 0.4 * (suma*1.0 / 5.0) + 0.6 * temp.egz;
+        Grupe.push_back(temp);
+    }
+    return Grupe;
+}
+
+void Paskirstymas_vector_1_strategija(const vector <Studentas> &Grupe, const int &irasu_sk) {
+    Timer t;
+
+    vector <Studentas> Vargsai, Moksliukai;
+
+    for (auto &stud : Grupe) {
+        if (stud.gal >= 5) {
+            Moksliukai.push_back(stud);
+        }
+        else {
+            Vargsai.push_back(stud);
         }
     }
-    return(ivestis);
+    
+    cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
-char Rikiavimo_tipas() {
-    char rik;
-    cout << "Pasirinkite, pagal ka norite isrikiuoti duomenis:" << endl;
-    cout << "[A] pavardes\t[B] vardus\t[C] galutini bala pagal vidurki\t [D] galutini bala pagal mediana" << endl; cin >> rik;
-    rik = Iv_raid_patikra(rik, "abcd");
-    return rik;
-}
+void Paskirstymas_list_1_strategija(const list <Studentas> &Grupe, const int &irasu_sk) {
+    Timer t;
 
-pair <string, int> Failo_pasirinkimas() {
-    string ivesties_pav;
-    char f_tip, rik;
-    cout << "Pasirinkite, kokio studentu skaiciaus faila tikrinsite:\n[A] 1.000\t[B] 10.000\t[C] 100.000\t[D] 1.000.000\t[E] 10.000.000\n";
-    cin >> f_tip;
-    f_tip = Iv_raid_patikra(f_tip, "abcde");
-    rik = Rikiavimo_tipas();
-    map <char, int> tipai = {{'a', 1000}, {'b', 10000}, {'c', 100000}, {'d', 1000000}, {'e', 10000000}};
-    int irasu_sk = tipai[f_tip];
-    ivesties_pav = "stud" + to_string(irasu_sk) + ".txt";
-    return {ivesties_pav, irasu_sk};
-}
+    list <Studentas> Vargsai, Moksliukai;
 
-vector <Studentas> Rikiavimas_vector(vector <Studentas> Rikiuojamas, char rik) {
-    sort(std::execution::par, Rikiuojamas.begin(), Rikiuojamas.end(), [rik](const Studentas &a, const Studentas &b) {
-        if (rik == 'a') {
-            return a.pavarde < b.pavarde;
-        } else if (rik == 'b') {
-            return a.vardas < b.vardas;
-        } else if (rik == 'c') {
-            return a.galVid > b.galVid;
-        } else {
-            return a.galMed > b.galMed;
+    for (auto &stud : Grupe) {
+        if (stud.gal >= 5) {
+            Moksliukai.push_back(stud);
         }
-    });
-    return Rikiuojamas;
+        else {
+            Vargsai.push_back(stud);
+        }
+    }
+    
+    cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
-list <Studentas> Rikiavimas_list(list <Studentas> Rikiuojamas, char rik) {
-    Rikiuojamas.sort([rik](const Studentas &a, const Studentas &b){
-        if (rik == 'a') {
-            return a.pavarde < b.pavarde;
-        } else if (rik == 'b') {
-            return a.vardas < b.vardas;
-        } else if (rik == 'c') {
-            return a.galVid > b.galVid;
-        } else {
-            return a.galMed > b.galMed;
+void Paskirstymas_list_2_strategija(list <Studentas> Grupe, const int &irasu_sk) {
+    Timer t;
+    
+    list <Studentas> Vargsai;
+    for (auto it = Grupe.begin(); it != Grupe.end();) {
+        if (it->gal < 5) {
+            Vargsai.push_back(*it);
+            it = Grupe.erase(it);
         }
-    });
-    return Rikiuojamas;
+        else {
+            ++it;
+        }
+    }
+
+    
+    cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+}
+
+void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu_sk) {
+    Timer t;
+    vector <Studentas> Vargsai;
+    
+    for (auto it = Grupe.begin(); it != Grupe.end();) {
+        if (it->gal < 5) {
+            Vargsai.push_back(*it);
+            it = Grupe.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+    cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+}
+
+void Testavimas_vector(const int &irasu_sk, vector <Studentas> Grupe) {
+    Paskirstymas_vector_1_strategija(Grupe, irasu_sk);
+
+    Paskirstymas_vector_2_strategija(Grupe, irasu_sk);
+}
+
+void Testavimas_list(const int &irasu_sk, list <Studentas> Grupe) {
+    Paskirstymas_list_1_strategija(Grupe, irasu_sk);
+
+    Paskirstymas_list_2_strategija(Grupe, irasu_sk);
+}
+
+void Testavimas(int irasu_sk) {
+    Timer t;
+    cout << "\nGeneruojami " << irasu_sk << " dydzio duomenys..." << endl;
+    vector <Studentas> Grupe_vector = Generuoti_vector(irasu_sk);
+
+    list <Studentas> Grupe_list(Grupe_vector.size());
+    std::copy(Grupe_vector.begin(), Grupe_vector.end(), Grupe_list.begin());
+    cout << "Pradedamas testavimas su " << irasu_sk << " irasu failu!\n";
+    Testavimas_vector(irasu_sk, Grupe_vector);
+    Testavimas_list(irasu_sk, Grupe_list);
+
+    Grupe_vector.clear();
+    Grupe_list.clear();
 }
