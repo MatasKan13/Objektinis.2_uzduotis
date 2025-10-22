@@ -36,7 +36,6 @@ void Paskirstymas_vector_1_strategija(const vector <Studentas> &Grupe, const int
             Vargsai.push_back(stud);
         }
     }
-    
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
@@ -53,7 +52,6 @@ void Paskirstymas_list_1_strategija(const list <Studentas> &Grupe, const int &ir
             Vargsai.push_back(stud);
         }
     }
-    
     cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
@@ -70,24 +68,23 @@ void Paskirstymas_list_2_strategija(list <Studentas> Grupe, const int &irasu_sk)
             ++it;
         }
     }
-
-    
     cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
 void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu_sk) {
     Timer t;
+
     vector <Studentas> Vargsai;
-    
-    for (auto it = Grupe.begin(); it != Grupe.end();) {
-        if (it->gal < 5) {
-            Vargsai.push_back(*it);
-            it = Grupe.erase(it);
+    size_t newSize = 0;
+    for (size_t i = 0; i<Grupe.size(); i++) {
+        if(Grupe[i].gal < 5) {
+            Vargsai.push_back(Grupe[i]);
         }
         else {
-            ++it;
+            Grupe[newSize++] = std::move(Grupe[i]);
         }
     }
+    Grupe.erase(Grupe.begin() + newSize, Grupe.end());
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
@@ -113,7 +110,6 @@ void Testavimas(int irasu_sk) {
     cout << "Pradedamas testavimas su " << irasu_sk << " irasu failu!\n";
     Testavimas_vector(irasu_sk, Grupe_vector);
     Testavimas_list(irasu_sk, Grupe_list);
-
     Grupe_vector.clear();
     Grupe_list.clear();
 }
