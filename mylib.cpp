@@ -2,6 +2,7 @@
 
 vector <Studentas> Generuoti_vector(const int &stud_sk) {
     vector <Studentas> Grupe;
+    Grupe.reserve(stud_sk);
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution dist(1,10);
@@ -28,7 +29,7 @@ void Paskirstymas_list_1_strategija(const list <Studentas> &Grupe, const int &ir
 
     list <Studentas> Vargsai, Moksliukai;
 
-    for (auto &stud : Grupe) {
+    for (auto stud : Grupe) {
         if (stud.gal >= 5) {
             Moksliukai.push_back(stud);
         }
@@ -43,6 +44,8 @@ void Paskirstymas_vector_1_strategija(const vector <Studentas> &Grupe, const int
     Timer t;
 
     vector <Studentas> Vargsai, Moksliukai;
+    Vargsai.reserve(irasu_sk);
+    Moksliukai.reserve(irasu_sk);
 
     for (auto &stud : Grupe) {
         if (stud.gal >= 5) {
@@ -75,6 +78,7 @@ void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu
     Timer t;
 
     vector <Studentas> Vargsai;
+    Vargsai.reserve(irasu_sk);
     size_t newSize = 0;
     for (size_t i = 0; i<Grupe.size(); i++) {
         if(Grupe[i].gal < 5) {
@@ -85,6 +89,7 @@ void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu
         }
     }
     Grupe.erase(Grupe.begin() + newSize, Grupe.end());
+
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
@@ -108,6 +113,7 @@ void Paskirstymas_vector_3_strategija(vector <Studentas> &Grupe, const int &iras
     Timer t;
     
     vector <Studentas> Vargsai;
+    Vargsai.reserve(irasu_sk);
 
     std::remove_copy_if(Grupe.begin(), Grupe.end(), std::back_inserter(Vargsai),[](const auto &stud) {
         return stud.gal < 5;
@@ -121,23 +127,24 @@ void Paskirstymas_vector_3_strategija(vector <Studentas> &Grupe, const int &iras
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 3 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
 }
 
-void Testavimas_vector(const int &irasu_sk, vector <Studentas> Grupe) {
+void Testavimas_vector(const int &irasu_sk, vector <Studentas>& Grupe) {
     Paskirstymas_vector_1_strategija(Grupe, irasu_sk);
     Paskirstymas_vector_2_strategija(Grupe, irasu_sk);
     Paskirstymas_vector_3_strategija(Grupe, irasu_sk);
 }
 
-void Testavimas_list(const int &irasu_sk, list <Studentas> Grupe) {
+void Testavimas_list(const int &irasu_sk, list <Studentas>& Grupe) {
     Paskirstymas_list_1_strategija(Grupe, irasu_sk);
     Paskirstymas_list_2_strategija(Grupe, irasu_sk);
     Paskirstymas_list_3_strategija(Grupe, irasu_sk);
 }
 
-void Testavimas(int irasu_sk) {
+void Testavimas(const int &irasu_sk) {
     Timer t;
     cout << "\nGeneruojami " << irasu_sk << " dydzio duomenys..." << endl;
-    vector <Studentas> Grupe_vector = Generuoti_vector(irasu_sk);
-
+    vector <Studentas> Grupe_vector;
+    Grupe_vector.reserve(irasu_sk);
+    Grupe_vector = Generuoti_vector(irasu_sk);
     list <Studentas> Grupe_list(Grupe_vector.size());
     std::copy(Grupe_vector.begin(), Grupe_vector.end(), Grupe_list.begin());
     cout << "Pradedamas testavimas su " << irasu_sk << " irasu failu!\n";
