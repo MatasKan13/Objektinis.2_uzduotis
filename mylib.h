@@ -55,14 +55,14 @@ void Paskirstymas_vector_2_strategija(vector <Studentas>, const int&);
 void Paskirstymas_list_2_strategija(list <Studentas>, const int&);
 void Paskirstymas_vector_3_strategija(vector <Studentas>&, const int&);
 void Paskirstymas_list_3_strategija(list <Studentas>&, const int&);
-void Testavimas_vector(const int&, vector <Studentas>);
-void Testavimas_list(const int&, list <Studentas>);
-void Testavimas(int);
+void Testavimas_vector(const int&, vector <Studentas>&);
+void Testavimas_list(const int&, list <Studentas>&);
+void Testavimas(const int&);
 
 // Galimam surūšiavimo į grupes patikrinimui:
 
 // template <typename T>
-// void Spausdinimas(T Spausd_gr) {
+// void Spausdinimas(const T &Spausd_gr) {
 //     stringstream ss;
 //     ss << setw(15) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(17) << left << "Galutinis (Vid.) " << endl;
 //     ss << string(52,'-');
