@@ -157,7 +157,7 @@ Rezultatai:
   </tbody>
 </table>
 
-Išvados: Su nedideliais duomenų kiekiais abu konteineriai dirba apylygiai, tačiau nuo 100.000 įrašų matomas ryškus std::vector pranašumas prieš std::list (su viena išimtimi įrašyme į failus 10 mln. eilučių atveju). Didžiausias skirtumas matomas rikiavimo užduotyje, kurią vektorius atlieka net 2–3 kartus greičiau nei sąrašas.
+**Išvados**: Su nedideliais duomenų kiekiais abu konteineriai dirba apylygiai, tačiau nuo 100.000 įrašų matomas ryškus std::vector pranašumas prieš std::list (su viena išimtimi įrašyme į failus 10 mln. eilučių atveju). Didžiausias skirtumas matomas rikiavimo užduotyje, kurią vektorius atlieka net 2–3 kartus greičiau nei sąrašas.
 
 Kompiuterio, su kuriuo atlikta analizė, parametrai: 1,2 GHz procesorius, 8 GB RAM, SSD 238 GB.
 
@@ -167,7 +167,7 @@ Atlikta studentų rūšiavimo į išlaikiusius ir neišlaikiusius spartos analiz
 * 2 strategija – iteravimas per konteinerį Grupė, išlaikiusius studentus paliekant konteineryje, o neišlaikiusius pašalinant ir įkeliant į konteinerį Vargšai. Viskas įvykdoma per vieną iteraciją. Algoritmai iš <algorithm> bibliotekos nenaudojami;
 * 3 strategija – 2 strategija papildoma algoritmais iš <algorithm> bibliotekos, tikrinant, ar bus išvystyta greitesnė sparta; <br>
 
-Rezultatai:
+Rezultatai (duomenys lentelėje pateikiami sekundėmis; vidurkis išvestas atlikus 5 bandymus):
 
 <table>
   <caption><b>Studentų išskaidymas į dvi dalis pagal strategiją ir konteinerį</b></caption>
@@ -236,3 +236,5 @@ Rezultatai:
     </tr>
   </tbody>
 </table>
+
+**Išvados**: 2 strategija yra greičiausia su visais įrašų skaičiais išskyrus 1.000, t. y.  išmanus vienos iteracijos metodas buvo spartesnis net ir už algoritmus iš <algorithm> bibliotekos. Konteinerių atžvilgiu, vektorius pasirodė esantis spartesnis visose kategorijose išskyrus 10 mln. įrašų; vektoriaus veikimą ypač paspartino nuorodų (&) naudojimas ir išankstinis atminties rezervavimas su reserve() metodu. Vis dėlto didžiausio įrašų skaičiaus kategorijoje greičiausiai veikė sąrašas, kuris 10 mln. elementų perskirstydavo vidutiniškai per 0,8333 sekundės.
