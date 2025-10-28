@@ -160,3 +160,79 @@ Rezultatai:
 Išvados: Su nedideliais duomenų kiekiais abu konteineriai dirba apylygiai, tačiau nuo 100.000 įrašų matomas ryškus std::vector pranašumas prieš std::list (su viena išimtimi įrašyme į failus 10 mln. eilučių atveju). Didžiausias skirtumas matomas rikiavimo užduotyje, kurią vektorius atlieka net 2–3 kartus greičiau nei sąrašas.
 
 Kompiuterio, su kuriuo atlikta analizė, parametrai: 1,2 GHz procesorius, 8 GB RAM, SSD 238 GB.
+
+**V1.0** <br>
+Atlikta studentų rūšiavimo į išlaikiusius ir neišlaikiusius spartos analizė, taikant 3 skirtingas strategijas:
+* 1 strategija – ankstesnėje versijoje taikytas metodas – pradinio konteinerio Grupė skaidymas į du atskirus konteinerius Moksliukai ir Vargšai, paprastai iteruojant ir naudojant vektorių push_back() metodą;
+* 2 strategija – iteravimas per konteinerį Grupė, išlaikiusius studentus paliekant konteineryje, o neišlaikiusius pašalinant ir įkeliant į konteinerį Vargšai. Viskas įvykdoma per vieną iteraciją. Algoritmai iš <algorithm> bibliotekos nenaudojami;
+* 3 strategija – 2 strategija papildoma algoritmais iš <algorithm> bibliotekos, tikrinant, ar bus išvystyta greitesnė sparta; <br>
+
+Rezultatai:
+
+<table>
+  <caption><b>Studentų išskaidymas į dvi dalis pagal strategiją ir konteinerį</b></caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan = "2">1</th>
+      <th colspan = "2">2</th>
+      <th colspan = "2">3</th>
+    </tr>
+    <tr>
+      <th>Įrašų skaičius</th>
+      <th>Vector</th>
+      <th>List</th>
+      <th>Vector</th>
+      <th>List</th>
+      <th>Vector</th>
+      <th>List</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.000</td>
+      <td>0,001</td>
+      <td>0,0008</td>
+      <td>0,0009</td>
+      <td>0,0005</td>
+      <td><b>0,0004</b></td>
+      <td>0,0005</td>
+    </tr>
+    <tr>
+      <td>10.000</td>
+      <td>0,0025</td>
+      <td>0,0032</td>
+      <td><b>0,0017</b></td>
+      <td>0,0019</td>
+      <td>0,0018</td>
+      <td>0,0022</td>
+    </tr>
+    <tr>
+      <td>100.000</td>
+      <td>0,0091</td>
+      <td>0,026</td>
+      <td><b>0,0066</b></td>
+      <td>0,0078</td>
+      <td>0,0083</td>
+      <td>0,0178</td>
+    </tr>
+    <tr>
+      <td>1.000.000</td>
+      <td>0,0845</td>
+      <td>0,2272</td>
+      <td><b>0,0579</b></td>
+      <td>0,0712</td>
+      <td>0,0829</td>
+      <td>0,01527</td>
+    </tr>
+    <tr>
+      <td>10.000.000</td>
+      <td>0,9757</td>
+      <td>2,9958</td>
+      <td>0,8691</td>
+      <td><b>0,8333</b></td>
+      <td>0,8725</td>
+      <td>1,8701</td>
+    </tr>
+  </tbody>
+</table>
