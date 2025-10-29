@@ -240,7 +240,7 @@ Rezultatai (duomenys lentelėje pateikiami sekundėmis; vidurkis išvestas atlik
 **Išvados**: 2 strategija yra greičiausia su visais įrašų skaičiais išskyrus 1.000, t. y.  išmanus vienos iteracijos metodas buvo spartesnis net ir už algoritmus iš `<algorithm>` bibliotekos. Konteinerių atžvilgiu, vektorius pasirodė esantis spartesnis visose kategorijose išskyrus 10 mln. įrašų; vektoriaus veikimą ypač paspartino nuorodų (&) naudojimas ir išankstinis atminties rezervavimas su reserve() metodu. Vis dėlto didžiausio įrašų skaičiaus kategorijoje greičiausiai veikė sąrašas, kuris 10 mln. elementų perskirstydavo vidutiniškai per 0,8333 sekundės.
 
 Naudojimosi instrukcija:
-1. Įsitikinkite, kad kompiuteryje turite įdiegtus C++ kompiliatorių bei projekto generavimo įrankius cmake ir make;
+1. Įsitikinkite, kad kompiuteryje turite įdiegtus C++ kompiliatorių bei projekto generavimo įrankius cmake ir make, jei ne – įsidiekite;
 2. Parsisiųskite failus main.cpp, mylib.cpp, mylib.h, timer.h ir CMakeLists.txt;
 3. Pasirinkite aplanką, kuriame bus vykdomi kodo paleidimo veiksmai (toliau – DA (darbinis aplankas)). Į jį įkelkite failą CMakeLists.txt ir sukurkite aplankus „src“ bei „include“;
 4. Į aplanką „src“ perkelkite visus projekto .cpp failus, į aplanką „include“ – visus projekto .h failus.
