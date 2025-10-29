@@ -164,8 +164,8 @@ Kompiuterio, su kuriuo atlikta analizė, parametrai: 1,2 GHz procesorius, 8 GB R
 **V1.0** <br>
 Atlikta studentų rūšiavimo į išlaikiusius ir neišlaikiusius spartos analizė, taikant 3 skirtingas strategijas:
 * 1 strategija – ankstesnėje versijoje taikytas metodas – pradinio konteinerio Grupė skaidymas į du atskirus konteinerius Moksliukai ir Vargšai, paprastai iteruojant ir naudojant vektorių push_back() metodą;
-* 2 strategija – iteravimas per konteinerį Grupė, išlaikiusius studentus paliekant konteineryje, o neišlaikiusius pašalinant ir įkeliant į konteinerį Vargšai. Viskas įvykdoma per vieną iteraciją. Algoritmai iš <algorithm> bibliotekos nenaudojami;
-* 3 strategija – 2 strategija papildoma algoritmais iš <algorithm> bibliotekos, tikrinant, ar bus išvystyta greitesnė sparta; <br>
+* 2 strategija – iteravimas per konteinerį Grupė, išlaikiusius studentus paliekant konteineryje, o neišlaikiusius pašalinant ir įkeliant į konteinerį Vargšai. Viskas įvykdoma per vieną iteraciją. Algoritmai iš `<algorithm>` bibliotekos nenaudojami;
+* 3 strategija – 2 strategija papildoma algoritmais iš `<algorithm>` bibliotekos, tikrinant, ar bus išvystyta greitesnė sparta; <br>
 
 Rezultatai (duomenys lentelėje pateikiami sekundėmis; vidurkis išvestas atlikus 5 bandymus):
 
@@ -237,4 +237,18 @@ Rezultatai (duomenys lentelėje pateikiami sekundėmis; vidurkis išvestas atlik
   </tbody>
 </table>
 
-**Išvados**: 2 strategija yra greičiausia su visais įrašų skaičiais išskyrus 1.000, t. y.  išmanus vienos iteracijos metodas buvo spartesnis net ir už algoritmus iš <algorithm> bibliotekos. Konteinerių atžvilgiu, vektorius pasirodė esantis spartesnis visose kategorijose išskyrus 10 mln. įrašų; vektoriaus veikimą ypač paspartino nuorodų (&) naudojimas ir išankstinis atminties rezervavimas su reserve() metodu. Vis dėlto didžiausio įrašų skaičiaus kategorijoje greičiausiai veikė sąrašas, kuris 10 mln. elementų perskirstydavo vidutiniškai per 0,8333 sekundės.
+**Išvados**: 2 strategija yra greičiausia su visais įrašų skaičiais išskyrus 1.000, t. y.  išmanus vienos iteracijos metodas buvo spartesnis net ir už algoritmus iš `<algorithm>` bibliotekos. Konteinerių atžvilgiu, vektorius pasirodė esantis spartesnis visose kategorijose išskyrus 10 mln. įrašų; vektoriaus veikimą ypač paspartino nuorodų (&) naudojimas ir išankstinis atminties rezervavimas su reserve() metodu. Vis dėlto didžiausio įrašų skaičiaus kategorijoje greičiausiai veikė sąrašas, kuris 10 mln. elementų perskirstydavo vidutiniškai per 0,8333 sekundės.
+
+Naudojimosi instrukcija:
+1. Įsitikinkite, kad kompiuteryje turite įdiegtus C++ kompiliatorių bei projekto generavimo įrankius cmake ir make;
+2. Parsisiųskite failus main.cpp, mylib.cpp, mylib.h, timer.h ir CMakeLists.txt;
+3. Pasirinkite aplanką, kuriame bus vykdomi kodo paleidimo veiksmai (toliau – DA (darbinis aplankas)). Į jį įkelkite failą CMakeLists.txt ir sukurkite aplankus „src“ bei „include“;
+4. Į aplanką „src“ perkelkite visus projekto .cpp failus, į aplanką „include“ – visus projekto .h failus.
+5. Per komandinę eilutę (terminalą) nueikite iki savo pasirinkto DA. Tuomet jame įvykdykite šias komandas: <br>
+    5.1. mkdir build <br>
+    5.2. cd build <br>
+    5.3. cmake [-DCMAKE_BUILD_TYPE=Release] ..<br>
+    5.4. cmake --build .<br>
+6. Buvo sukurtas vykdomasis failas (v1_0.exe). Belieka jį pavykdyti, į komandinę eilutę parašant „v1_0.exe“.
+
+Gero naudojimo!
