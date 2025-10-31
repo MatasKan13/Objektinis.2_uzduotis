@@ -1,27 +1,34 @@
 #include "mylib.h"
 
-vector <Studentas> Generuoti_vector(const int &stud_sk) {
-    vector <Studentas> Grupe;
-    Grupe.reserve(stud_sk);
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution dist(1,10);
-
-    for (int i = 1; i<=stud_sk; i++) {
-        Studentas temp;
-        int suma = 0;
-        temp.vardas = "Vardas" + to_string(i);
-        temp.pavarde = "Pavarde" + to_string(i);
-        for (int j = 1; j <= 5; j++) {
-            int p = dist(gen);
-            suma += p;
-            temp.paz.push_back(p);
+void Failo_nuskaitymas(vector <Studentas> &Grupe, const int& irasu_sk) {
+    cout << "Puiku! Nuskaitomas failas..." << endl;
+    string failo_pav = "stud" + to_string(irasu_sk) + ".txt";
+    stringstream buferis;
+    ifstream in(failo_pav);
+    buferis << in.rdbuf();
+    in.close();
+    string stulp;
+    getline(buferis, stulp);
+    while (!buferis.eof()) {
+        Studentas stud;
+        string eil;
+        int pazymys;
+        vector <int> pazymiai;
+        getline(buferis, eil);
+        istringstream srautas(eil);
+        srautas >> stud.vardas >> stud.pavarde;
+        while(srautas >> pazymys) {
+            stud.paz.push_back(pazymys);
         }
-        temp.egz = dist(gen);
-        temp.gal = 0.4 * (suma*1.0 / 5.0) + 0.6 * temp.egz;
-        Grupe.push_back(temp);
+        stud.egz = stud.paz.back();
+        stud.paz.pop_back();
+        int suma = 0, n = stud.paz.size();
+        for (int p : stud.paz) {
+            suma+=p;
+        }
+        stud.gal = 0.4 * double(suma)/double(n) + 0.6 * stud.egz;
+        Grupe.push_back(stud);
     }
-    return Grupe;
 }
 
 void Paskirstymas_list_1_strategija(const list <Studentas> &Grupe, const int &irasu_sk) {
@@ -38,6 +45,9 @@ void Paskirstymas_list_1_strategija(const list <Studentas> &Grupe, const int &ir
         }
     }
     cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+    
+    Spausdinimas(Moksliukai, 1);
+    Spausdinimas(Vargsai, 1);
 }
 
 void Paskirstymas_vector_1_strategija(const vector <Studentas> &Grupe, const int &irasu_sk) {
@@ -55,7 +65,11 @@ void Paskirstymas_vector_1_strategija(const vector <Studentas> &Grupe, const int
             Vargsai.push_back(stud);
         }
     }
+
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 1 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+
+    Spausdinimas(Moksliukai, 1);
+    Spausdinimas(Vargsai, 1);
 }
 
 void Paskirstymas_list_2_strategija(list <Studentas> Grupe, const int &irasu_sk) {
@@ -72,6 +86,9 @@ void Paskirstymas_list_2_strategija(list <Studentas> Grupe, const int &irasu_sk)
         }
     }
     cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+
+    Spausdinimas(Grupe, 2);
+    Spausdinimas(Vargsai, 2);
 }
 
 void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu_sk) {
@@ -91,6 +108,9 @@ void Paskirstymas_vector_2_strategija(vector <Studentas> Grupe, const int &irasu
     Grupe.erase(Grupe.begin() + newSize, Grupe.end());
 
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 2 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+
+    Spausdinimas(Grupe, 2);
+    Spausdinimas(Vargsai, 2);
 }
 
 void Paskirstymas_list_3_strategija(list <Studentas> &Grupe, const int &irasu_sk) {
@@ -99,7 +119,7 @@ void Paskirstymas_list_3_strategija(list <Studentas> &Grupe, const int &irasu_sk
     list <Studentas> Vargsai;
 
     std::remove_copy_if(Grupe.begin(), Grupe.end(), std::back_inserter(Vargsai),[](const auto &stud) {
-        return stud.gal < 5;
+        return stud.gal >= 5;
     });
 
     auto border = std::partition(Grupe.begin(),Grupe.end(),[](const Studentas &stud){
@@ -107,6 +127,9 @@ void Paskirstymas_list_3_strategija(list <Studentas> &Grupe, const int &irasu_sk
     });
     Grupe.erase(border, Grupe.end());
     cout << irasu_sk << " dydzio saraso dalijimo i dvi grupes, taikant 3 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+
+    Spausdinimas(Grupe, 3);
+    Spausdinimas(Vargsai, 3);
 }
 
 void Paskirstymas_vector_3_strategija(vector <Studentas> &Grupe, const int &irasu_sk) {
@@ -116,8 +139,10 @@ void Paskirstymas_vector_3_strategija(vector <Studentas> &Grupe, const int &iras
     Vargsai.reserve(irasu_sk);
 
     std::remove_copy_if(Grupe.begin(), Grupe.end(), std::back_inserter(Vargsai),[](const auto &stud) {
-        return stud.gal < 5;
+        return stud.gal >= 5;
     });
+
+    Vargsai.shrink_to_fit();
 
     auto new_end = std::remove_if(Grupe.begin(), Grupe.end(), [](const Studentas &stud) {
         return stud.gal < 5;
@@ -125,6 +150,9 @@ void Paskirstymas_vector_3_strategija(vector <Studentas> &Grupe, const int &iras
     Grupe.erase(new_end, Grupe.end());
 
     cout << irasu_sk << " dydzio vektoriaus dalijimo i dvi grupes, taikant 3 STRATEGIJA, laikas: " << t.elapsed() << " s\n";
+
+    Spausdinimas(Grupe, 3);
+    Spausdinimas(Vargsai, 3);
 }
 
 void Testavimas_vector(const int &irasu_sk, vector <Studentas>& Grupe) {
@@ -140,13 +168,13 @@ void Testavimas_list(const int &irasu_sk, list <Studentas>& Grupe) {
 }
 
 void Testavimas(const int &irasu_sk) {
-    Timer t;
-    cout << "\nGeneruojami " << irasu_sk << " dydzio duomenys..." << endl;
     vector <Studentas> Grupe_vector;
     Grupe_vector.reserve(irasu_sk);
-    Grupe_vector = Generuoti_vector(irasu_sk);
+    cout << "\nNuskaitomi " << irasu_sk << " dydzio duomenys..." << endl;
+    Failo_nuskaitymas(Grupe_vector, irasu_sk);
     list <Studentas> Grupe_list(Grupe_vector.size());
     std::copy(Grupe_vector.begin(), Grupe_vector.end(), Grupe_list.begin());
+
     cout << "Pradedamas testavimas su " << irasu_sk << " irasu failu!\n";
     Testavimas_vector(irasu_sk, Grupe_vector);
     cout << endl;
