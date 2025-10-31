@@ -2,7 +2,9 @@
 
 int main() {
 
-    for (int irasu_sk = 1'000; irasu_sk<=10'000'000; irasu_sk*=10) {
-        Testavimas(irasu_sk);
-    }
+    Testavimas(1'000);
+    Testavimas(10'000);
+    Testavimas(100'000);
+    Testavimas(1'000'000);
+    Testavimas(10'000'000);
 }
