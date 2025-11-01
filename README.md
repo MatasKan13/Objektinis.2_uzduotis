@@ -252,3 +252,8 @@ Naudojimosi instrukcija:
 6. Buvo sukurtas vykdomasis failas (v1_0.exe). Belieka jį pavykdyti, į komandinę eilutę parašant „v1_0.exe“.
 
 Gero naudojimo!
+
+**V1.1** <br>
+1. Objektų laikymas struktūrose pakeistas klasėmis;
+2. Atlikta struktūrų, klasių bei optimizavimo lygių įtakos vykdomojo failo (.exe) dydžiui bei programos spartai analizė. <br>
+Analizės apžvalga:
