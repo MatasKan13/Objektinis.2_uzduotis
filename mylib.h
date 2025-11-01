@@ -1,6 +1,9 @@
 #ifndef MYLIB_H
 #define MYLIB_H
 
+#include "timer.h"
+#include "studentas.h"
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -14,7 +17,6 @@
 #include <map>
 #include <list>
 #include <execution>
-#include "timer.h"
 
 using std::cout;
 using std::cin;
@@ -44,32 +46,12 @@ using std::stoi;
 using std::pair;
 using std::copy;
 
-void Failo_nuskaitymas(vector <Studentas> &Grupe, const int& irasu_sk);
+void Failo_nuskaitymas(vector <Studentas> &, const int&);
 void Paskirstymas_vector_1_strategija(const vector <Studentas>&, const int&);
 void Paskirstymas_vector_2_strategija(vector <Studentas>, const int&);
 void Paskirstymas_vector_3_strategija(vector <Studentas>&, const int&);
 void Testavimas_vector(const int&, vector <Studentas>&);
 void Testavimas(const int&);
-
-template <typename T>
-void Spausdinimas(const T &Spausd_gr, const int& strat) {
-    stringstream ss;
-    ss << setw(15) << left << "Vardas" << setw(20) << left << "Pavarde" << setw(17) << left << "Galutinis (Vid.) " << endl;
-    ss << string(52,'-');
-    for (const auto &Past : Spausd_gr) {
-        ss << endl << setw(15) << left << Past.vardas << setw(20) << left << Past.pavarde << setw(17) << left << fixed << setprecision(2) << Past.gal;
-    }
-    
-    auto it = Spausd_gr.begin();
-    if (it->gal >= 5) {
-        ofstream out("kietiakai" + to_string(strat) + ".txt");
-        out << ss.str();
-        out.close();
-    } else {
-        ofstream out("nuskriaustukai" + to_string(strat) + ".txt");
-        out << ss.str();
-        out.close();
-    }
-}
+void Spausdinimas(const vector <Studentas> &, const int&);
 
 #endif
