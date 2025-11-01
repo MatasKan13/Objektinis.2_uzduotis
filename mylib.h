@@ -44,23 +44,11 @@ using std::stoi;
 using std::pair;
 using std::copy;
 
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector <int> paz;
-    int egz;
-    double gal;
-};
-
 void Failo_nuskaitymas(vector <Studentas> &Grupe, const int& irasu_sk);
 void Paskirstymas_vector_1_strategija(const vector <Studentas>&, const int&);
-void Paskirstymas_list_1_strategija(const list <Studentas>&, const int&);
 void Paskirstymas_vector_2_strategija(vector <Studentas>, const int&);
-void Paskirstymas_list_2_strategija(list <Studentas>, const int&);
 void Paskirstymas_vector_3_strategija(vector <Studentas>&, const int&);
-void Paskirstymas_list_3_strategija(list <Studentas>&, const int&);
 void Testavimas_vector(const int&, vector <Studentas>&);
-void Testavimas_list(const int&, list <Studentas>&);
 void Testavimas(const int&);
 
 template <typename T>
