@@ -256,4 +256,8 @@ Gero naudojimo!
 **V1.1** <br>
 1. Objektų laikymas struktūrose pakeistas klasėmis;
 2. Atlikta struktūrų, klasių bei optimizavimo lygių įtakos vykdomojo failo (.exe) dydžiui bei programos spartai analizė. <br>
+
 Analizės apžvalga:
+Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100'000 ir 1'000'000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0).
+
+Rezultatai:
