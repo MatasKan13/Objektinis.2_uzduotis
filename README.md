@@ -260,4 +260,31 @@ Gero naudojimo!
 Analizės apžvalga:
 Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100'000 ir 1'000'000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0).
 
-Rezultatai:
+Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo laiko vidurkis sekundėmis; vidurkis išvestas iš 5 bandymų):
+<table>
+  <caption>1. Programos spartos palyginimas pagal vartotojo apibrėžtą tipą</caption>
+  <thead>
+    <tr>
+      <th rowspan = '2'>Įrašų skaičius</th>
+      <th rowspan = '2'>Optimizavimo lygis</th>
+      <th colspan = '2'>Vidurkis</th>
+    </tr>
+    <tr>
+      <th>STRUCT</th>
+      <th>CLASS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan = '3'>100.000</td>
+      <td>O1</td>
+      <td>0,0088</td>
+      <td>0,0075</td>
+    </tr>
+    <tr>
+      <td>O2</td>
+      <td>0,0076</td>
+      <td>0,0084</td>
+    </tr>
+  </tbody>
+</table>
