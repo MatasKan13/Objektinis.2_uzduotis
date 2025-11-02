@@ -23,6 +23,7 @@ class Studentas{
         inline string pavarde() const {return pavarde_;}
         inline double balas() const {return gal_;};
         double balo_sk() const;
+        void keistiDuomenis(string, string, vector <int>, int);
         ~Studentas() {};
 };
 
