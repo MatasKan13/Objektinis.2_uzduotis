@@ -258,16 +258,16 @@ Gero naudojimo!
 2. Atlikta struktūrų, klasių bei optimizavimo lygių įtakos vykdomojo failo (.exe) dydžiui bei programos spartai analizė. <br>
 
 Analizės apžvalga:
-Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100.000 ir 1.000.000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0), taikant antrąją strategiją.
+Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100.000 ir 1.000.000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0), taikant antrąją strategiją, vidurkis išvestas iš 5 bandymų.
 
-Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo laiko vidurkis sekundėmis; vidurkis išvestas iš 5 bandymų):
+Rezultatai:
 <table>
   <caption><b>1. Programos spartos palyginimas pagal vartotojo apibrėžtą tipą ir optimizavimo lygį</b></caption>
   <thead>
     <tr>
       <th rowspan = '2'>Įrašų skaičius</th>
       <th rowspan = '2'>Optimizavimo lygis</th>
-      <th colspan = '2'>Vidurkis</th>
+      <th colspan = '2'>Vidurkis (s)</th>
     </tr>
     <tr>
       <th>STRUCT</th>
@@ -311,11 +311,11 @@ Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo l
 </table>
 
 <table>
-  <caption><b>Vykdomojo failo dydis, priklausomai nuo optimizavimo lygio bei vartotojo apibrėžto tipo</b></caption>
+  <caption><b>2. Vykdomojo failo dydis, priklausomai nuo optimizavimo lygio bei vartotojo apibrėžto tipo</b></caption>
   <thead>
     <tr>
       <th rowspan = '2'>Optimizavimo lygis</th>
-      <th colspan = '2'>Vykdomojo failo dydis</th>
+      <th colspan = '2'>Vykdomojo failo dydis (KB)</th>
     </tr>
     <tr>
       <th>STRUCT</th>
@@ -340,3 +340,9 @@ Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo l
     </tr>
   </tbody>
 </table>
+
+**Išvados:** 
+1. Aiškaus spartos skirtumo tarp vartotojo apibrėžtų tipų nebuvo, tačiau 1.000.000 įrašų testavimo duomenys leidžia daryti prielaidą, kad sparta taikant class tipą gali būti greitesnė;
+2. Kaip ir buvo galima tikėtis, O3 optimizavimo lygis garantavo greičiausią užduoties atlikimą beveik visais atvejais (išimtis – class su 100.000 įrašų, bet skirtumas labai menkas);
+3. Kiek netikėtai vykdomieji failai su O3 optimizavimo lygiu pasirodė esą patys didžiausi. Geriausiai pasirodė O2 optimizavimo lygis.
+4. Vykdomieji failai taikant class tipą sumažėjo beveik 10 % visais atvejais. Tai irgi leidžia manyti, kad naudoti class tipą objektų kūrimui yra efektyviau.
