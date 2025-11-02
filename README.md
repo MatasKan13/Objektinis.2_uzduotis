@@ -1,6 +1,6 @@
 **Matas Kantautas** <br>
 **Vilniaus universiteto duomenų mokslo programa** <br>
-**Objektinio programavimo 1 laboratorinis darbas**
+**Objektinio programavimo 2 laboratorinis darbas**
 
 **V0.1** <br>
 1. Sukurta galutinio balo skaičiavimo sistema;
@@ -258,11 +258,11 @@ Gero naudojimo!
 2. Atlikta struktūrų, klasių bei optimizavimo lygių įtakos vykdomojo failo (.exe) dydžiui bei programos spartai analizė. <br>
 
 Analizės apžvalga:
-Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100'000 ir 1'000'000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0).
+Buvo matuojamas vykdomojo failo dydis kiekvienam optimizavimo lygiui bei struct ir class objektams. Matavimai atlikti su 100.000 ir 1.000.000 įrašų failais. Sparta matuota studentų išrūšiavimo į išlaikiusius ir neišlaikiusius užduotyje (taip pat, kaip ir v1.0), taikant antrąją strategiją.
 
 Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo laiko vidurkis sekundėmis; vidurkis išvestas iš 5 bandymų):
 <table>
-  <caption>1. Programos spartos palyginimas pagal vartotojo apibrėžtą tipą</caption>
+  <caption><b>1. Programos spartos palyginimas pagal vartotojo apibrėžtą tipą ir optimizavimo lygį</b></caption>
   <thead>
     <tr>
       <th rowspan = '2'>Įrašų skaičius</th>
@@ -285,6 +285,27 @@ Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo l
       <td>O2</td>
       <td>0,0076</td>
       <td>0,0084</td>
+    </tr>
+    <tr>
+      <td>O3</td>
+      <td>0,0071</td>
+      <td>0,0076</td>
+    </tr>
+    <tr>
+      <td rowspan = '3'>1.000.000</td>
+      <td>O1</td>
+      <td>0,0663</td>
+      <td>0,0641</td>
+    </tr>
+    <tr>
+      <td>O2</td>
+      <td>0,0641</td>
+      <td>0,0638</td>
+    </tr>
+    <tr>
+      <td>O3</td>
+      <td>0,0639</td>
+      <td>0,0605</td>
     </tr>
   </tbody>
 </table>
