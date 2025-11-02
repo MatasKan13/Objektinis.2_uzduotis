@@ -279,33 +279,64 @@ Rezultatai (vykdomųjų failų dydžiai matuoti kilobaitais; programos veikimo l
       <td rowspan = '3'>100.000</td>
       <td>O1</td>
       <td>0,0088</td>
-      <td>0,0075</td>
+      <td><b>0,0075</b></td>
     </tr>
     <tr>
       <td>O2</td>
-      <td>0,0076</td>
+      <td><b>0,0076</b></td>
       <td>0,0084</td>
     </tr>
     <tr>
       <td>O3</td>
-      <td>0,0071</td>
+      <td><b>0,0071</b></td>
       <td>0,0076</td>
     </tr>
     <tr>
       <td rowspan = '3'>1.000.000</td>
       <td>O1</td>
       <td>0,0663</td>
-      <td>0,0641</td>
+      <td><b>0,0641</b></td>
     </tr>
     <tr>
       <td>O2</td>
       <td>0,0641</td>
-      <td>0,0638</td>
+      <td><b>0,0638</b></td>
     </tr>
     <tr>
       <td>O3</td>
       <td>0,0639</td>
-      <td>0,0605</td>
+      <td><b>0,0605</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption><b>Vykdomojo failo dydis, priklausomai nuo optimizavimo lygio bei vartotojo apibrėžto tipo</b></caption>
+  <thead>
+    <tr>
+      <th rowspan = '2'>Optimizavimo lygis</th>
+      <th colspan = '2'>Vykdomojo failo dydis</th>
+    </tr>
+    <tr>
+      <th>STRUCT</th>
+      <th>CLASS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O1</td>
+      <td>186</td>
+      <td><b>181</b></td>
+    </tr>
+    <tr>
+      <td>O2</td>
+      <td>183</td>
+      <td><b>169</b></td>
+    </tr>
+    <tr>
+      <td>O3</td>
+      <td>187</td>
+      <td><b>171</b></td>
     </tr>
   </tbody>
 </table>
