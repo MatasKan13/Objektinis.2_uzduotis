@@ -13,6 +13,9 @@ using std::istringstream;
 using std::pair;
 using std::sort;
 using std::cout;
+using std::cin;
+
+int Pazymiu_patikra(string ivestis);
 
 class Studentas{
     string vardas_;
@@ -47,13 +50,22 @@ class Studentas{
         }
 
         friend std::istream& operator>>(std::istream& in, Studentas& stud) {
-            int n, p;
+            int i = 1;
             cout << "Iveskite studento varda: "; in >> stud.vardas_;
             cout << "Iveskite studento pavarde: "; in >> stud.pavarde_;
-            cout << "Iveskite pazymiu skaiciu: "; in >> n;
-            for (int i=1;i<=n;i++) {
-                cout << "Iveskite " << i << "-aji pazymi: "; in >> p;
-                stud.paz_.push_back(p);
+            cout << "Iveskite pazymius (baige iveskite 0)." << '\n';
+            while (true) {
+                string paz;
+                cout << i << "-asis pazymys: "; in >> paz;
+                int p = Pazymiu_patikra(paz);
+                if (p == 0) {
+                    if (stud.paz_.size() != 0) break;
+                    else cout << "Prasome ivesti pazymiu!\n";
+                }
+                else {
+                    stud.paz_.push_back(p);
+                    i++;
+                }
             }
             cout << "Iveskite egzamino ivertinima: "; in >> stud.egz_;
             pair <double, double> balai = stud.balo_sk();
