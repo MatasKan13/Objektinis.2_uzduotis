@@ -5,12 +5,14 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <iostream>
 
 using std::string;
 using std::vector;
 using std::istringstream;
 using std::pair;
 using std::sort;
+using std::cout;
 
 class Studentas{
     string vardas_;
@@ -39,6 +41,26 @@ class Studentas{
             egz_ = 0;
             gal_ = 0;
         };
+        friend std::ostream& operator<<(std::ostream& out, const Studentas& stud) {
+            out << stud.vardas_ << " " << stud.pavarde_ << " " << stud.gal_ << '\n';
+            return out;
+        }
+
+        friend std::istream& operator>>(std::istream& in, Studentas& stud) {
+            int n, p;
+            cout << "Iveskite studento varda: "; in >> stud.vardas_;
+            cout << "Iveskite studento pavarde: "; in >> stud.pavarde_;
+            cout << "Iveskite pazymiu skaiciu: "; in >> n;
+            for (int i=1;i<=n;i++) {
+                cout << "Iveskite " << i << "-aji pazymi: "; in >> p;
+                stud.paz_.push_back(p);
+            }
+            cout << "Iveskite egzamino ivertinima: "; in >> stud.egz_;
+            pair <double, double> balai = stud.balo_sk();
+            stud.gal_ = balai.first;
+            stud.galMed_ = balai.second;
+            return in;
+        }
 };
 
 #endif
