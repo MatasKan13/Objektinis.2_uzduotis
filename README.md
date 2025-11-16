@@ -2,6 +2,14 @@
 **Vilniaus universiteto duomenų mokslo programa** <br>
 **Objektinio programavimo 2 laboratorinis darbas**
 
+**V1.2** <br>
+1. Programai pritaikytas „Rule of three“ reikalavimas – nuo šiol klasė studentas turi destruktorių, kopijavimo konstruktorių ir priskyrimo operatorių (=);
+2. Perdengti operatoriai „<<“ ir „>>“, taip įgalinant vartotojui patogų studentų duomenų įvedimą ir išvedimą;
+
+Informacija apie perdengtus įvesties ir išvesties operatorius:
+* Įvesties operatorius (>>):
+* Išvesties operatorius (<<):
+
 **V1.1** <br>
 1. Objektų laikymas struktūrose pakeistas klasėmis;
 2. Atlikta struktūrų, klasių bei kompiliatoriaus optimizavimo lygių įtakos vykdomojo failo (.exe) dydžiui bei programos spartai analizė. <br>
