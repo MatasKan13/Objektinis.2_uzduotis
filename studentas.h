@@ -22,13 +22,15 @@ class Studentas{
     public:
         Studentas() : egz_(0) {};
         Studentas(istringstream& iss);
-        Studentas(string v, string pav, vector <int> paz, int egz);
+        Studentas(string, string, vector <int>, int);
+        Studentas(const Studentas& ); // kopijavimo konstruktorius
         inline string vardas() const {return vardas_;}
         inline string pavarde() const {return pavarde_;}
         inline double balasVid() const {return gal_;}
         inline double balasMed() const {return galMed_;}
         pair <double,double> balo_sk() const;
         void keistiDuomenis(string, string, vector <int>, int);
+        Studentas& operator=(const Studentas&); // priskyrimo operatorius
         ~Studentas() {
             vardas_.clear();
             pavarde_.clear();

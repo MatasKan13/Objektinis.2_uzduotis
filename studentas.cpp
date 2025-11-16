@@ -43,6 +43,18 @@ Studentas::Studentas(string v, string pav, vector <int> paz, int egz) : vardas_{
     galMed_ = balai.second;
 }
 
+Studentas::Studentas(const Studentas& stud) : vardas_{stud.vardas_}, pavarde_{stud.pavarde_}, paz_{stud.paz_}, egz_{stud.egz_}, gal_{stud.gal_}, galMed_{stud.galMed_} {}
+
+Studentas& Studentas::operator=(const Studentas& stud) {
+    vardas_ = stud.vardas_;
+    pavarde_ = stud.pavarde_;
+    paz_ = stud.paz_;
+    egz_ = stud.egz_;
+    gal_ = stud.gal_;
+    galMed_ = stud.galMed_;
+    return *this;
+}
+
 void Studentas::keistiDuomenis(string v, string p, vector <int> pz, int e) {
     vardas_ = v;
     pavarde_ = p;

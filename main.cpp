@@ -25,6 +25,11 @@ int main() {
             Vargsai = Rikiavimas(Vargsai, rik);
             cout << "Kaip skaiciuoti galutini ivertinima? Pasirinkite: su vidurkiu [V], su mediana [M] ar abu [A]? "; cin >> rodinys;
             rodinys = Iv_raid_patikra(rodinys, "vma");
+            // Kopijavimo konstruktoriaus ir priskyrimo operatoriaus veikimo pavyzdys:
+            // Studentas stud {Moksliukai[0]};
+            // cout << stud.vardas() << " " << stud.pavarde() << " " << stud.balasVid() << '\n';
+            // Studentas stud2 = stud;
+            // cout << stud2.vardas() << " " << stud2.pavarde() << " " << stud2.balasVid() << '\n';
             Spausdinimas_paprastas(Vargsai, rodinys);
             Spausdinimas_paprastas(Moksliukai, rodinys);
         }
