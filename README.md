@@ -7,8 +7,23 @@
 2. Perdengti operatoriai „<<“ ir „>>“, taip įgalinant vartotojui patogų studentų duomenų įvedimą ir išvedimą;
 
 Informacija apie perdengtus įvesties ir išvesties operatorius:
-* Įvesties operatorius (>>):
-* Išvesties operatorius (<<):
+* **Įvesties operatorius (>>):** Nuo šiol galima paprastai įrašyti studento duomenis naudojant operatorių >>. Sistema pareikalaus įrašyti studento vardą, pavardę, namų darbų pažymius ir egzamino pažymį. Pažymiai bus patikrinti, t. y. negalima neteisinga įvestis. <br>
+Realizacija: <br>
+<img width="676" height="618" alt="image" src="https://github.com/user-attachments/assets/d7f6626e-a6ae-45e5-8965-8d4918a211e9" />
+
+* **Išvesties operatorius (<<):** Nuo šiol galima paprastai išvesti studento duomenis naudojant operatorių <<. Sistema išves studento vardą, pavardę bei galutinį pažymį. <br>
+Realizacija: <br>
+<img width="752" height="108" alt="image" src="https://github.com/user-attachments/assets/303d2c92-c190-4b60-b436-4fe8890e77f2" />
+
+
+Štai naujai perdengtų operatorių panaudojimo pavyzdys: <br>
+<img width="308" height="74" alt="image" src="https://github.com/user-attachments/assets/83f4a1ea-826c-4526-9b93-99dbc769ac8c" /> <br>
+
+
+Gautas rezultatas suvykdžius kodą: <br>
+<img width="350" height="197" alt="image" src="https://github.com/user-attachments/assets/0a76dba1-cdc8-40fe-9a94-9e4eb5cdcbac" />
+
+
 
 **V1.1** <br>
 1. Objektų laikymas struktūrose pakeistas klasėmis;
