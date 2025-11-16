@@ -64,3 +64,18 @@ void Studentas::keistiDuomenis(string v, string p, vector <int> pz, int e) {
     gal_ = balai.first;
     galMed_ = balai.second;
 }
+
+int Pazymiu_patikra(string ivestis) {
+    int paz;
+    while (true) {
+        try {
+            paz = stoi(ivestis);
+            if (paz >= 0 && paz < 11) break; 
+            else cout << "Neteisinga ivestis! Bandykite dar karta: "; cin >> ivestis;
+        }
+        catch(...) {
+            cout << "Neteisinga ivestis! Bandykite dar karta: "; cin >> ivestis;
+        }
+    }
+    return paz;
+}
