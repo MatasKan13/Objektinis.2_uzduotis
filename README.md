@@ -2,6 +2,15 @@
 **Vilniaus universiteto duomenų mokslo programa** <br>
 **Objektinio programavimo 2 laboratorinis darbas**
 
+**V1.5** <br>
+1. Sukurta nauja abstrakti klasė Žmogus, savyje sauganti vardo ir pavardės atributus bei jų išgavimo metodus;
+2. Klasė Studentas nuo šiol yra išvestinė klasė, paveldinti Žmogaus klasės savybes, tačiau ir toliau išlaikanti „Rule of three“ reikalavimą;
+
+Kadangi klasė Žmogus yra abstrakti, jos objektų sukurti neįmanoma. Tai iliustruojantis pavyzdys: bandome suvykdyti šį kodą:
+
+Gautas rezultatas:
+
+
 **V1.2** <br>
 1. Programai pritaikytas „Rule of three“ reikalavimas – nuo šiol klasė studentas turi destruktorių, kopijavimo konstruktorių ir priskyrimo operatorių (=);
 2. Perdengti operatoriai „<<“ ir „>>“, taip įgalinant vartotojui patogų studentų duomenų įvedimą ir išvedimą;
