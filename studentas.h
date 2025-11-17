@@ -1,6 +1,8 @@
 #ifndef STUDENTAS_H
 #define STUDENTAS_H
 
+#include "zmogus.h"
+
 #include <string>
 #include <vector>
 #include <sstream>
@@ -17,9 +19,7 @@ using std::cin;
 
 int Pazymiu_patikra(string ivestis);
 
-class Studentas{
-    string vardas_;
-    string pavarde_;
+class Studentas : public Zmogus{
     vector <int> paz_;
     int egz_;
     double gal_, galMed_;
@@ -29,16 +29,14 @@ class Studentas{
         Studentas(istringstream& iss);
         Studentas(string, string, vector <int>, int);
         Studentas(const Studentas& ); // kopijavimo konstruktorius
-        inline string vardas() const {return vardas_;}
-        inline string pavarde() const {return pavarde_;}
+        virtual inline string vardas() const {return vardas_;}
+        virtual inline string pavarde() const {return pavarde_;}
         inline double balasVid() const {return gal_;}
         inline double balasMed() const {return galMed_;}
         pair <double,double> balo_sk() const;
         void keistiDuomenis(string, string, vector <int>, int);
         Studentas& operator=(const Studentas&); // priskyrimo operatorius
         ~Studentas() {
-            vardas_.clear();
-            pavarde_.clear();
             paz_.clear();
             paz_.shrink_to_fit();
             egz_ = 0;

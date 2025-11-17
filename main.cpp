@@ -32,6 +32,8 @@ int main() {
             // cout << "stud2: " << stud2.vardas() << " " << stud2.pavarde() << " " << stud2.balasVid() << '\n';
             // cin >> stud3;
             // cout << "stud3: " << stud3;
+            // Bandymas sukurti Žmogaus klasės objektą:
+            // Zmogus zmog;
             Spausdinimas_paprastas(Vargsai, rodinys);
             Spausdinimas_paprastas(Moksliukai, rodinys);
         }

@@ -37,13 +37,13 @@ Studentas::Studentas(istringstream& iss) {
     galMed_ = balai.second;
 }
 
-Studentas::Studentas(string v, string pav, vector <int> paz, int egz) : vardas_{v}, pavarde_{pav}, paz_{paz}, egz_{egz} {
+Studentas::Studentas(string v, string pav, vector <int> paz, int egz) : Zmogus{v,pav}, paz_{paz}, egz_{egz} {
     pair <double,double> balai = balo_sk();
     gal_ = balai.first;
     galMed_ = balai.second;
 }
 
-Studentas::Studentas(const Studentas& stud) : vardas_{stud.vardas_}, pavarde_{stud.pavarde_}, paz_{stud.paz_}, egz_{stud.egz_}, gal_{stud.gal_}, galMed_{stud.galMed_} {}
+Studentas::Studentas(const Studentas& stud) : Zmogus{stud.vardas_,stud.pavarde_}, paz_{stud.paz_}, egz_{stud.egz_}, gal_{stud.gal_}, galMed_{stud.galMed_} {}
 
 Studentas& Studentas::operator=(const Studentas& stud) {
     vardas_ = stud.vardas_;
