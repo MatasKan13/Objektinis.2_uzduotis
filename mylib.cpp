@@ -44,6 +44,21 @@ int Iv_paz_patikra(string ivestis, bool egzas) {
     return(paz);
 }
 
+int Stud_sk_patikra(string ivestis) {
+    int m;
+    while (true) {
+        try {
+            m = stoi(ivestis);
+            if (m > 0) break;
+            else cout << "Neteisinga ivestis! Bandykite dar karta: "; cin >> ivestis;
+        }
+        catch(...) {
+            cout << "Neteisinga ivestis! Bandykite dar karta: "; cin >> ivestis;
+        }
+    }
+    return(m);
+}
+
 Studentas Stud_ivestis(int sk){
     int laik_paz, n = 1, tempEgz;
     char testi, atsit;
@@ -144,9 +159,11 @@ void Ekrano_isvestis(const vector <Studentas>& Vargsai, const vector <Studentas>
 }
 
 void Ivestis_ranka(vector <Studentas> &Vargsai, vector <Studentas> &Moksliukai) {
+    string ivestis;
     int m;
     char rik;
-    cout << "Kiek studentu grupeje? "; cin >> m;
+    cout << "Kiek studentu grupeje? "; cin >> ivestis;
+    m = Stud_sk_patikra(ivestis);
     for (auto i = 0; i < m; i++) {
         Studentas laik;
         laik = Stud_ivestis(i);
@@ -413,3 +430,4 @@ void Testavimas(const int &irasu_sk) {
     Grupe_vector.clear();
     Grupe_list.clear();
 }
+
