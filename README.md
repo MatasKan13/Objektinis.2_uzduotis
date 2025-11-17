@@ -6,9 +6,10 @@
 1. Sukurta nauja abstrakti klasė Žmogus, savyje sauganti vardo ir pavardės atributus bei jų išgavimo metodus;
 2. Klasė Studentas nuo šiol yra išvestinė klasė, paveldinti Žmogaus klasės savybes, tačiau ir toliau išlaikanti „Rule of three“ reikalavimą;
 
-Kadangi klasė Žmogus yra abstrakti, jos objektų sukurti neįmanoma. Tai iliustruojantis pavyzdys: bandome suvykdyti šį kodą:
-
-Gautas rezultatas:
+Kadangi klasė Žmogus yra abstrakti, jos objektų sukurti neįmanoma. Tai iliustruojantis pavyzdys: bandome suvykdyti šį kodą (pats redaktorius perspėja apie būsimą klaidą): <br>
+<img width="425" height="50" alt="image" src="https://github.com/user-attachments/assets/6f6edb08-88c6-47ca-9c18-42eba0acdeda" /> <br>
+Gautas rezultatas: <br>
+<img width="788" height="95" alt="image" src="https://github.com/user-attachments/assets/17e0147b-a6a0-4a89-b2b6-5f33d7f773d4" /> <br>
 
 
 **V1.2** <br>
